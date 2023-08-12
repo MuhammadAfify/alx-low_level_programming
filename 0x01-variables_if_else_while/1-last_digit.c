@@ -4,7 +4,7 @@
 /**
  * main - print the last digit and define if greater than 5,  less or zero
  *
- * Return - Always zero
+ * Return - Always 0
  *
  */
 
@@ -16,10 +16,10 @@ int main(void)
 	n = rand() - RAND_MAX / 2;
 	Last_digit = n % 10;
 	if (Last_digit > 5)
-		printf("%d and is greater than 5", n);
+		printf("Last digit is %d and is greater than 5", n);
 	else if (Last_digit == 0)
-		printf("%d and is 0", n);
+		printf("%d and is Last digit", n);
 	else
-		printf("%d and is less than 6 and not 0", n);
+		printf("Last digit is %d and is less than 6 and not 0", n);
 	return (0);
 }
