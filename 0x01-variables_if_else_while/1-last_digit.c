@@ -9,22 +9,22 @@
 
 int main(void)
 {
-	int n, Last_digit;
+	int n, LstDigit;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	Last_digit = n % 10;
-	if (Last_digit > 5)
+	LstDigit = n % 10;
+	if (LstDigit > 5)
 	{
-		printf("Last digit of %d is %d and is greater than 5\n", n, Last_digit);
+		printf("Last digit of %d is %d and is greater than 5\n", n, LstDigit);
 	}
-	else if (Last_digit != 0 && Last_digit < 6)
+	else if (LstDigit != 0 && LstDigit < 6)
 	{
-		printf("The Last digit of %d is %d and is laess than 6 and not 0\n", n, Last_digit);
+		printf("The Last digit of %d is %d and is laess than 6 and not 0\n", n, LstDigit);
 	}
 	else
 	{
-		printf("Last digit is %d", Last_digit);
+		printf("Last digit is %d", LstDigit);
 	}
 	return (0);
 }
