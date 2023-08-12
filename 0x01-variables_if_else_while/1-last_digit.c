@@ -5,7 +5,6 @@
  * main - print the last digit and define if greater than 5,  less or zero
  *
  * Return - Always 0
- *
  */
 
 int main(void)
@@ -17,7 +16,7 @@ int main(void)
 	Last_digit = n % 10;
 	if (Last_digit > 5)
 		printf("Last digit is %d and is greater than 5", Last_digit);
-	else if (Last_digit == 0)
+	else if (Last_digit = 0 && Last_digit<6)
 		printf("%d and is Last digit", Last_digit);
 	else
 		printf("Last digit is %d and is less than 6 and not 0", Last_digit);
