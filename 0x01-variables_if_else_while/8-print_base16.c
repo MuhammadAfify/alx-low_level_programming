@@ -7,9 +7,9 @@
 #include <stdio.h>
 int main(void)
 {
-	int i;
+	char i;
 
-	for (i = 0 ; i <= 0 ; i++)
+	for (i = '0' ; i <= '0' ; i++)
 		putchar("%x", i);
 	putchar('\n');
 	return (0);
