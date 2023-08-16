@@ -16,7 +16,7 @@ void times_table(void)
 		{
 			_putchar(s + '0');
 		}
-		if (k < 10 && k != 0)
+		if (s < 10 && s != 0)
 		{
 			_putchar(',');
 			_putchar(' ');
@@ -31,5 +31,6 @@ void times_table(void)
 			_putchar((k / 10) + '0');
 		}
 		_putchar('\n');
+		}
 	}
 }
