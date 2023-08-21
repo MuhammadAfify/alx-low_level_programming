@@ -1,8 +1,7 @@
 #include "main.h"
 /**
  * reset_to_98 - is used to change the value to 98
- *
- * &n : the value of the pointer.
+ * &n : pionter of n.
  */
 void reset_to_98(int *n)
 {
