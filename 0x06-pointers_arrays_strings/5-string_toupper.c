@@ -15,7 +15,7 @@ char *string_toupper(char *lower)
 		{
 			lower[x] -= 32;
 		}
-		x++
+		x++;
 	}
 
 	return (lower);
