@@ -17,5 +17,6 @@ char *string_toupper(char *lower)
 		}
 		x++
 	}
+
 	return (lower);
 }
