@@ -8,12 +8,13 @@
  */
 char *_strdup(char *str)
 {
-	int len = 0, i;
+	int len, i;
 	char *A;
 
 	if (str == NULL)
 		return (0);
 
+	len = 0;
 	while (*(str + 1))
 		len++;
 
@@ -24,7 +25,7 @@ char *_strdup(char *str)
 	
 	for (i = 0; i <= len; i++)
 	{
-		(A + i) = (str + i);
+		*(A + i) = *(str + i);
 	}
 	return (A);
 }
