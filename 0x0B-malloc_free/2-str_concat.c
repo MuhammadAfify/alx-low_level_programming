@@ -27,10 +27,10 @@ char *str_concat(char *s1, char *s2)
 	for (i = 0; i <= (size1 + size2); i++)
 	{
 		if (size1 < i)
-			m[i] = s1[i];
+			str[i] = s1[i];
 		else
-			m[i] = s2[i - size1];
+			str[i] = s2[i - size1];
 	}
-	m[i] = '\0';
-	return (m);
+	str[i] = '\0';
+	return (str);
 }
