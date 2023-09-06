@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 /**
  * main - the main function
  *
@@ -9,7 +10,7 @@
  */
 int main(int argc, char const *argv[])
 {
-	(void) argc;
-	printf("%i\n", argv[0]);
+	(void) argv;
+	printf("%i\n", argc - 1);
 	return (0);
 }
