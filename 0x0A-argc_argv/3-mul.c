@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
 	if (argc != 3)
 	{
-	printf("Error, it's must be three\n");
+	printf("%s\n", "Error");
 	return (1);
 	}
 	n1 = atoi(argv[1]);
