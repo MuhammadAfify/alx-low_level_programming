@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 /**
  * main - main func
  *
@@ -9,7 +10,7 @@
  */
 int main(int argc, char *argv[])
 {
-	int i, sum;
+	int i, sum = 0;
 
 	if (argc > 1)
 	{
