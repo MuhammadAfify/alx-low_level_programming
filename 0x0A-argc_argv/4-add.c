@@ -20,8 +20,6 @@ int main(int argc, char *argv[])
 			{
 				sum += atoi(argv[i]);
 			}
-			else
-				return (1);
 		}
 		printf("%i\n", sum);
 	}
