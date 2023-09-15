@@ -21,7 +21,7 @@ void print_strings(const char *separator, const unsigned int n, ...)
 	va_start(ap, n);
 	if (n > 0)
 	{
-		printf("%d", va_arg(ap, unsigned int));
+		printf("%d", va_arg(ap, char *));
 	}
 	for (i = 1; i < n; i++)
 	{
