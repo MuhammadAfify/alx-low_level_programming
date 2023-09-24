@@ -20,14 +20,14 @@ int _atoi(char *s)
 	while (s[len] != '\0')
 		len++;
 
-	while (i < len && f == 0)
+	while (x < len && f == 0)
 	{
 		if (s[x] == '-')
 			++y;
 
 		if (s[x] >= '0' && s[x] <= '9')
 		{
-			digit = s[x] - '0';
+			dig = s[x] - '0';
 			if (y % 2)
 				dig = -dig;
 			z = z * 10 + dig;
