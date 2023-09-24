@@ -2,9 +2,12 @@
 #define LIST_H
 
 #include <stddef.h>
+
 /**
  * struct list_s - single linkedlist
- *
+ * @str: string
+ * @len: length of string
+ * @next: pointers for next node
  */
 typedef struct list_s
 {
