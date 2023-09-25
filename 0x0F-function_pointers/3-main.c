@@ -22,12 +22,12 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	num1 = atoi(argv[1]);
 	num2 = atoi(argv[3]);
 	opt = argv[2];
-	if (get_op_func(argv[2]) == NULL || argv[2][2] != '\0')
+	if (get_op_func(argv[2]) == NULL || opt[1] != '\0')
 	{
 		printf("Error\n");
 		exit(99);
 	}
-	if ((*opt == '/' || *opt == '%') && (*argv[3] == '0'))
+	if ((*opt == '/' && num2 == 0) ||(*opt == '%' && num2 == 0))
 	{
 		printf("Error\n");
 		exit(100);
