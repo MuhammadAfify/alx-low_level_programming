@@ -2,7 +2,7 @@
 /**
  * print_listint - print list of linled list
  *
- * @h - pointer to head
+ * @h : pointer to head
  * Return: no. nodes
  */
 size_t print_listint(const listint_t *h)
