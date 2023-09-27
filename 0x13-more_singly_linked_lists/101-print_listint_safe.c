@@ -36,7 +36,7 @@ size_t print_listint_safe(const listint_t *head)
 	{
 		new_node = malloc(sizeof(listint_t));
 		if (new_node == NULL)
-			exit (98);
+			exit(98);
 		new_node->n = head;
 		new_node->next = ptr;
 		ptr = new_node;
