@@ -78,8 +78,8 @@ int main(int argc, char *argv[])
 	if (argc != 3)
 		printf("Error\n");
 	exit(98);
-	ln1 = _checknum(argv, 1);
-	ln2 = _checknum(argv, 2);
+	ln1 = checknum(argv, 1);
+	ln2 = checknum(argv, 2);
 	zero_check(argv);
 	lnout = ln1 + ln2;
 	out = malloc(lnout + 1);
