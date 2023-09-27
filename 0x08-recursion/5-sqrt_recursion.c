@@ -31,5 +31,5 @@ int _sqrt_recursion(int n)
 		return (0);
 	if (n == 1)
 		return (1);
-	return (pow_opt(n , 2));
+	return (pow_opt(n, 2));
 }
