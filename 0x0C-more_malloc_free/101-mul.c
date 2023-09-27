@@ -1,115 +1,195 @@
 #include "main.h"
-#include <ctype.h>
 /**
- * zero_check - check the number is zero
+ * find_length - Finds the length of a string
  *
- * @argv: argument vector
+ * @s: The string to be measured
+ * Return: The length of the string.
  */
-void zero_check(char *argv[])
+int find_length(char *s)
 {
-	int i, is1 = 1, is2 = 1;
+	int len = 0;
 
-	for (i = 0; argv[1][i]; i++)
-		if (argv[1][i] != '0')
-		{
-			is1 = 0;
-			break;
-		}
-	for (i = 0; argv[2][i]; i++)
-		if (argv[2][i] != '0')
-		{
-			is2 = 0;
-			break;
-		}
-	if (is1 == 1 || is2 == 1)
-	{
-		printf("0\n");
-		exit(0);
-	}
+	while (*s++)
+		len++;
+	return (len);
 }
 /**
- * init_array - set memery to zero in a new array
- *
- * @array: char array
- * @len: length of the char array
- * Return: pointer of a char array.
+ * create_array - Creates an array of chars and initializes it
+ * 
+ * @size: The size of the array to be initialized
+ * Return: A pointer to the array.
  */
-char *init_array(char *array, int len)
+char *create_array(int size)
 {
-	int i = 0;
+	char *array;
+	int i;
 
-	for (i = 0; i < len; i++)
-		array[i] = '0';
-	array[len] = '\0';
+	array = malloc(sizeof(char) * size);
+
+	if (array == NULL)
+		exit(98);
+
+	for (i = 0; i < (size - 1); i++)
+		array[i] = 'x';
+
+	array[i] = '\0';
+
 	return (array);
 }
 /**
- * checknum - determines length of the number
+ * iterate_zero - Iterates through a string of numbers containing
  *
- * @argv: arguments vector
- * @n: row of the array
- * Return: length of the number.
+ * @s: The string of numbers
+ * Return: A pointer to the next non-zero element.
  */
-int checknum(char *argv[], int n)
+char *iterate_zero(char *s)
 {
-	int ln;
+	while (*s && *s == '0')
+		s++;
+	return (s);
+}
+/**
+ * get_digit - Converts a digit character to a corresponding int
+ * 
+ * @c: The char to be converted
+ * Return: The converted int.
+ */
+int get_digit(char ch)
+{
+	int digit = ch - '0';
 
-	for (ln = 0; argv[n][ln]; ln++)
-		if (!isdigit(argv[n][ln]))
+	if (digit < 0 || digit > 9)
+	{
+		printf("Error\n");
+		exit(98);
+	}
+	return (digit);
+}
+/**
+ * get_prod - Multiplies a string of numbers by a single digit
+ *
+ * @prod: The buffer to store the result
+ * @mult: The string of numbers
+ * @digit: The single digit
+ * @zero: The necessary number of leading zeroes
+ */
+void get_prod(char *prod, char *mult, int digit, int zero)
+{
+	int mult_len, num, tens = 0;
+
+	mult_len = find_length(mult) - 1;
+	mult += mult_len;
+	while (*prod)
+	{
+		*prod = 'x';
+		prod++;
+	}
+	prod--;
+	while (zero--)
+	{
+		*prod = '0';
+		prod--;
+	}
+	for (; mult_len >= 0; mult_len--, mult--, prod--)
+	{
+		if (*mult < '0' || *mult > '9')
 		{
 			printf("Error\n");
 			exit(98);
 		}
-	return (ln);
+		num = (*mult - '0') * digit;
+		num += tens;
+		*prod = (num % 10) + '0';
+		tens = num / 10;
+	}
+	if (tens)
+		*prod = (tens % 10) + '0';
 }
 /**
- * main - Entry point
+ * add_num - Adds the numbers stored in two strings
  *
- * program that multiplies two positive numbers
- * @argc: number of arguments
- * @argv: arguments vector
- * Return: 0 if success.
+ * @final_prod: The buffer storing the running final product.
+ * @next_prod: The next product to be added.
+ * @next_len: The length of next_prod.
+ */
+void add_num(char *final_prod, char *next_prod, int next_len)
+{
+	int num, tens = 0;
+
+	while (*(final_prod + 1))
+		final_prod++;
+
+	while (*(next_prod + 1))
+		next_prod++;
+
+	for (; *final_prod != 'x'; final_prod--)
+	{
+		num = (*final_prod - '0') + (*next_prod - '0');
+		num += tens;
+		*final_prod = (num % 10) + '0';
+		tens = num / 10;
+
+		next_prod--;
+		next_len--;
+	}
+	for (; next_len >= 0 && *next_prod != 'x'; next_len--)
+	{
+		num = (*next_prod - '0');
+		num += tens;
+		*final_prod = (num % 10) + '0';
+		tens = num / 10;
+
+		final_prod--;
+		next_prod--;
+	}
+
+	if (tens)
+		*final_prod = (tens % 10) + '0';
+}
+/**
+ * main - Multiplies two positive numbers.
+ * @argv: The number of arguments passed to the program.
+ * @argc: An array of pointers to the arguments.
+ *
+ * Description: If the number of arguments is incorrect or one number
+ *              contains non-digits, the function exits with a status of 98.
+ * Return: Always 0.
  */
 int main(int argc, char *argv[])
 {
-	int ln1, ln2, lnout, add, addl, i, j, k, ca;
-	char *nout;
+	char *final_prod, *next_prod;
+	int size, index, digit, zeroes = 0;
 
 	if (argc != 3)
-		printf("Error\n"), exit(98);
-	ln1 = checknum(argv, 1), ln2 = checknum(argv, 2);
-	zero_check(argv), lnout = ln1 + ln2, nout = malloc(lnout + 1);
-	if (nout == NULL)
-		printf("Error\n"), exit(98);
-	nout = init_array(nout, lnout);
-	k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
-	for (; k >= 0; k--, i--)
 	{
-		if (i < 0)
-		{
-			if (addl > 0)
-			{
-				add = (nout[k] - '0') + addl;
-				if (add > 9)
-					nout[k - 1] = (add / 10) + '0';
-				nout[k] = (add % 10) + '0';
-			}
-			i = ln1 - 1, j--, addl = 0, ca++, k = lnout - (1 + ca);
-		}
-		if (j < 0)
-		{
-			if (nout[0] != '0')
-				break;
-			lnout--;
-			free(nout), nout = malloc(lnout + 1), nout = init_array(nout, lnout);
-			k = lnout - 1, i = ln1 - 1, j = ln2 - 1, ca = addl = 0;
-		}
-		if (j >= 0)
-		{
-			add = ((argv[1][i] - '0') * (argv[2][j] - '0')) + (nout[k] - '0') + addl;
-			addl = add / 10, nout[k] = (add % 10) + '0';
-		}
+		printf("Error\n");
+		exit(98);
 	}
-	printf("%s\n", nout);
+	if (*(argv[1]) == '0')
+		argv[1] = iterate_zero(argv[1]);
+	if (*(argv[2]) == '0')
+		argv[2] = iterate_zero(argv[2]);
+	if (*(argv[1]) == '\0' || *(argv[2]) == '\0')
+	{
+		printf("0\n");
+		return (0);
+	}
+	size = find_length(argv[1]) + find_length(argv[2]);
+	final_prod = create_array(size + 1);
+	next_prod = create_array(size + 1);
+	for (index = find_length(argv[2]) - 1; index >= 0; index--)
+	{
+		digit = get_digit(*(argv[2] + index));
+		get_prod(next_prod, argv[1], digit, zeroes++);
+		add_num(final_prod, next_prod, size - 1);
+	}
+	for (index = 0; final_prod[index]; index++)
+	{
+		if (final_prod[index] != 'x')
+			putchar(final_prod[index]);
+	}
+	putchar('\n');
+	free(next_prod);
+	free(final_prod);
 	return (0);
 }
