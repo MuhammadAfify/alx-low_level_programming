@@ -15,7 +15,7 @@ int find_length(char *s)
 }
 /**
  * create_array - Creates an array of chars and initializes it
- * 
+ *
  * @size: The size of the array to be initialized
  * Return: A pointer to the array.
  */
@@ -50,7 +50,7 @@ char *iterate_zero(char *s)
 }
 /**
  * get_digit - Converts a digit character to a corresponding int
- * 
+ *
  * @c: The char to be converted
  * Return: The converted int.
  */
