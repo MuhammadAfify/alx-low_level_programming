@@ -4,8 +4,8 @@
  *
  * @n: the number
  * Return: 0 if the number less than 1
- * 	1 if the number equal 1
- * 	factorial if the number greater than 1
+ *	1 if the number equal 1
+ *	factorial if the number greater than 1
  */
 int factorial(int n)
 {
