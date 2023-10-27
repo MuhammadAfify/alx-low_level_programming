@@ -1,0 +1,1 @@
+this static library task
