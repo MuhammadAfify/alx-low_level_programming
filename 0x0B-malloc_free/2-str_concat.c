@@ -23,12 +23,10 @@ char *str_concat(char *s1, char *s2)
 	arr = malloc((size1 + size2) * sizeof(char) + 1);
 	if (arr == 0)
 		return (0);
-	for (i = 0; i <= (size1 + size2); i++)
+	arr = s1;
+	for (i = 0; s2[i] != 0 ; size1++, i++)
 	{
-		if (size1 < i)
-			arr[i] = s1[i];
-		else
-			arr[i] = s2[i - size1];
+		arr[size1] = s2[i];
 	}
 	arr[i] = '\0';
 	return (arr);
