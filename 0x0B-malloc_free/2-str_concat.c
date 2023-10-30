@@ -30,5 +30,6 @@ char *str_concat(char *s1, char *s2)
 		else
 			arr[i] = s2[i - size1];
 	}
+	arr[i] = '\0';
 	return (arr);
 }
