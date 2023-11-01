@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+/**
+ * main - main func
+ *
+ * @argc: the no. elements
+ * @argv: the array of content
+ * Return: Always 0.
+ */
+int main(int argc, char *argv[])
+{
+	int i;
+
+	for (i = 0; i < argc; i++)
+	{
+		printf("%d\n",argv[i]);
+	}
+	return (0);
+}
