@@ -25,10 +25,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	if (noByte >= size2)
 	{
 		noByte = size2;
-		result = malloc(sizeof(char) * (size1 + size2 +1));
+		result = malloc(sizeof(char) * (size1 + size2 + 1));
 	}
 	else
-		result = malloc(sizeof(char) * (size1 + noByte +1));
+		result = malloc(sizeof(char) * (size1 + noByte + 1));
 	if (result == 0)
 		return (0);
 	for (i = 0; i < (size1 + noByte); i++)
