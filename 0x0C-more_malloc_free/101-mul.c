@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <ctype.h>
 /**
  * main - main function to multiply
  *
@@ -19,7 +20,7 @@ int main(int argc, char *argv[])
 	}
 	for (i = 0; i < argc; i++)
 	{
-		for (j = 0; i < argv[i][j] != '\0'; j++)
+		for (j = 0; argv[i][j] != '\0'; j++)
 		{
 			if (!(isdigit(argv[i][j])))
 			{
