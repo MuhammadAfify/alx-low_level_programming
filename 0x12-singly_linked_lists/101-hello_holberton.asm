@@ -1,6 +1,5 @@
-extern printf
-
 section .text
+   extern printf
    global main
 
 main:
@@ -9,5 +8,5 @@ main:
    call printf
 
 section .data
-   msg: db "Hello, Holberton", 0xa, 0
+   msg db 'Hello, Holberton', 0xa, 0
 
