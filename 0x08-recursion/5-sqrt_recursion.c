@@ -15,7 +15,7 @@ int square_find(int x, int y)
 		else
 			return (-1);
 	}
-	return (0 + pow_opt(x, y + 1));
+	return (0 + square_find(x, y + 1));
 }
 /**
  * _sqrt_recursion - natural square root of a number
